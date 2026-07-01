@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date - Nosso Próximo Capítulo</title>
+    <style>
+        /* Estilos Gerais e Tema Romântico Premium */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #faf6f0;
+            color: #2b2420;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Destaque do Save the Date no Topo */
+        .top-date-banner {
+            text-align: center;
+            background: #2b2420;
+            color: #ffffff;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(43, 36, 32, 0.15);
+            border: 1px solid #d4af37;
+        }
+
+        /* Calendário Superior Estilizado (Pulando Fim de Semana) */
+        .calendar-container {
+            width: 100%;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(43, 36, 32, 0.05);
+            margin-bottom: 30px;
+            border: 1px solid #f0e6db;
+        }
+
+        .calendar-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a38a75;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .day-box {
+            background: #fdfbf7;
+            border: 1px solid #ebdcd0;
+            border-radius: 12px;
+            padding: 10px 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .day-box.unlocked {
+            background: #f4ebe1;
+            border-color: #d4af37;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.15);
+        }
+
+        .day-box.unlocked .day-num {
+            color: #2b2420;
+            font-weight: bold;
+        }
+
+        .day-box.locked {
+            opacity: 0.6;
+            background: #faf8f5;
+        }
+
+        .day-box.locked:hover {
+            transform: translateY(-2px);
+            background: #f5f0eb;
+            opacity: 0.9;
+        }
+
+        .day-name {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8c7a6b;
+            margin-bottom: 4px;
+        }
+
+        .day-num {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6e5d4f;
+        }
+
+        .status-icon {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            color: #a38a75;
+        }
+
+        .day-box.unlocked .status-icon {
+            color: #d4af37;
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            width: 100%;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(43, 36, 32, 0.06);
+            border: 1px solid #ebdcd0;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .save-the-date-title {
+            font-size: 2rem;
+            letter-spacing: 3px;
+            color: #2b2420;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #a38a75;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .image-container {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto 30px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 4px solid #fdfbf7;
+            background: #eae5df;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message-box {
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #4a3e36;
+            font-size: 1.05rem;
+            text-align: left;
+            background: #faf6f0;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .message-box p {
+            margin-bottom: 15px;
+        }
+
+        .message-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #2b2420;
+        }
+
+        .logistica-note {
+            font-size: 0.85rem;
+            color: #8c7a6b;
+            font-style: italic;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px dashed #ebdcd0;
+            padding-top: 15px;
+        }
+
+        /* Pop-up / Modal Romântico */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(43, 36, 32, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #ebdcd0;
+        }
+
+        .modal-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            color: #2b2420;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: #6e5d4f;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn {
+            background: #2b2420;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Brasão Romântico J & T no Topo -->
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 15px; font-family: Georgia, serif;">
+        <div style="position: relative; display: inline-block; font-size: 3.5rem; font-weight: 300; color: #d4af37; letter-spacing: -15px; padding-right: 15px;">
+            <span style="display: inline-block; transform: rotate(-5deg) translateX(5px); position: relative; z-index: 1;">J</span>
+            <span style="font-size: 2rem; color: #a38a75; position: relative; top: -15px; left: -5px; z-index: 3; font-style: italic; letter-spacing: normal;">&</span>
+            <span style="display: inline-block; transform: rotate(5deg) translateX(-10px); position: relative; z-index: 2;">T</span>
+        </div>
+        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: #a38a75; margin-top: -5px; font-weight: 400;">
+            Nosso Próximo Capítulo
+        </div>
+    </div>
+
+    <!-- PRIMEIRA PARTE: Data de Destaque Absoluto -->
+    <div class="top-date-banner">
+        SAVE THE DATE • 10 . 07 . 2026
+    </div>
+
+    <!-- Calendário Superior -->
+    <div class="calendar-container">
+        <div class="calendar-title">Nossa Contagem Regressiva</div>
+        <div class="calendar-days">
+            <div class="day-box unlocked" onclick="alert('Você já está vendo o mistério de hoje! Fique atenta às surpresas. 🥰')">
+                <div class="day-name">Qui</div>
+                <div class="day-num">02</div>
+                <div class="status-icon">🔓</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('03/07')">
+                <div class="day-name">Sex</div>
+                <div class="day-num">03</div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('06/07')">
+                <div class="day-name">Seg</div>
+                <div class="day-num">06</div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('07/07')">
+                <div class="day-name">Ter</div>
+                <div class="day-num">07</div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('08/07')">
+                <div class="day-name">Qua</div>
+                <div class="day-num">08</div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('09/07')">
+                <div class="day-name">Qui</div>
+                <div class="day-num">09</div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-box locked" onclick="showModal('10/07')">
+                <div class="day-name">Sex</div>
+                <div class="day-num">10</div>
+                <div class="status-icon">❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal (Dia 02/07) -->
+    <div class="main-content">
+        <h1 class="save-the-date-title">SAVE THE DATE</h1>
+        <div class="subtitle">Tudo no tempo certo...</div>
+        
+        <!-- Busca Automática pela Imagem da Pasta -->
+        <div class="image-container">
+            <img src="capa0207.png" alt="Save the Date - 10.07.2026" onerror="this.style.display='none'; this.parentNode.style.background='#eae5df'; this.parentNode.innerHTML='<div style=padding-top:180px;color:#a38a75>Sua foto capa0207.png aparecerá aqui</div>'">
+        </div>
+
+        <div class="message-box">
+            <p>Eu sei que demorou. Mas a verdade é que tudo nesta vida tem o <span class="highlight">tempo certo</span> para acontecer, e o nosso momento chegou.</p>
+            <p>Sei que as quintas-feiras costumam ser apenas a véspera do final de semana, mas a partir de hoje ela marca o início de algo histórico para nós dois.</p>
+            <p>Por mais que você <span class="highlight">já saiba o final</span> dessa história, eu tenho a absoluta certeza de que a nossa jornada ao longo desta semana será completamente <span class="highlight">inesquecível</span>.</p>
+            <p>E para começar: <span class="highlight">talvez durante o dia você receba algo, fique bem atenta!</span> 👀✨</p>
+            
+            <p class="logistica-note">Nota do Chef: Se por acaso a logística falhar, você receberá à noite. Mas fique tranquila, porque o nosso grande dia está marcado e é na próxima sexta-feira, 10.07.2026! ❤️</p>
+            
+            <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #2b2420;">Eu te amo!</p>
+        </div>
+    </div>
+
+    <!-- Modal de Controle de Ansiedade -->
+    <div class="modal-overlay" id="custom-modal">
+        <div class="modal-card">
+            <div class="modal-icon">🔒</div>
+            <div class="modal-title">Acesso Negado!</div>
+            <div class="modal-text">Calma, ansiosa! ❤️<br><span style="font-size: 0.85rem; color: #a38a75;">Tudo no tempo certo...</span></div>
+            <button class="modal-btn" onclick="closeModal()">Segurar a Curiosidade 🥰</button>
+        </div>
+    </div>
+
+    <script>
+        function showModal(day) {
+            document.getElementById('custom-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
