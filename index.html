@@ -39,7 +39,7 @@
             border: 1px solid #d4af37;
         }
 
-        /* Calendário Superior Estilizado (Pulando Fim de Semana) */
+        /* Calendário Superior Estilizado */
         .calendar-container {
             width: 100%;
             max-width: 800px;
@@ -120,10 +120,6 @@
             color: #a38a75;
         }
 
-        .day-box.unlocked .status-icon {
-            color: #d4af37;
-        }
-
         /* Conteúdo Principal */
         .main-content {
             width: 100%;
@@ -135,6 +131,16 @@
             padding: 40px;
             text-align: center;
             animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Gerenciador de Abas dos Dias */
+        .day-content {
+            display: none;
+        }
+
+        .day-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
 
         .save-the-date-title {
@@ -206,7 +212,86 @@
             padding-top: 15px;
         }
 
-        /* Pop-up / Modal Romântico */
+        /* Área de Votação Interativa */
+        .voting-section {
+            margin-top: 25px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px dashed #d4af37;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .voting-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2b2420;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .voting-options {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .vote-btn {
+            background: #ffffff;
+            color: #2b2420;
+            border: 2px solid #ebdcd0;
+            padding: 12px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .vote-btn:hover {
+            border-color: #d4af37;
+            background: #faf6f0;
+            transform: translateY(-2px);
+        }
+
+        .vote-btn.selected {
+            background: #2b2420;
+            color: #ffffff;
+            border-color: #2b2420;
+        }
+
+        /* Botão do WhatsApp Especial */
+        .wpp-container {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .wpp-btn {
+            background: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .wpp-btn:hover {
+            background: #20ba56;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Pop-up / Modal Romântico com Input */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -245,11 +330,21 @@
             font-weight: 600;
         }
 
-        .modal-text {
-            color: #6e5d4f;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ebdcd0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            background: #faf6f0;
+            color: #2b2420;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #d4af37;
         }
 
         .modal-btn {
@@ -260,6 +355,8 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
+            width: 100%;
+            margin-top: 5px;
         }
 
         @keyframes fadeIn {
@@ -270,7 +367,7 @@
 </head>
 <body>
 
-    <!-- Brasão Romântico J & T no Topo -->
+    <!-- Brasão Romântico J & T -->
     <div style="text-align: center; margin-top: 10px; margin-bottom: 15px; font-family: Georgia, serif;">
         <div style="position: relative; display: inline-block; font-size: 3.5rem; font-weight: 300; color: #d4af37; letter-spacing: -15px; padding-right: 15px;">
             <span style="display: inline-block; transform: rotate(-5deg) translateX(5px); position: relative; z-index: 1;">J</span>
@@ -282,7 +379,7 @@
         </div>
     </div>
 
-    <!-- PRIMEIRA PARTE: Data de Destaque Absoluto -->
+    <!-- Data no Topo -->
     <div class="top-date-banner">
         SAVE THE DATE • 10 . 07 . 2026
     </div>
@@ -291,37 +388,37 @@
     <div class="calendar-container">
         <div class="calendar-title">Nossa Contagem Regressiva</div>
         <div class="calendar-days">
-            <div class="day-box unlocked" onclick="alert('Você já está vendo o mistério de hoje! Fique atenta às surpresas. 🥰')">
+            <div class="day-box unlocked" id="btn-02" onclick="switchDay('02')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">02</div>
                 <div class="status-icon">🔓</div>
             </div>
-            <div class="day-box locked" onclick="showModal('03/07')">
+            <div class="day-box locked" id="btn-03" onclick="checkDay('03', 'amor03')">
                 <div class="day-name">Sex</div>
                 <div class="day-num">03</div>
                 <div class="status-icon">🔒</div>
             </div>
-            <div class="day-box locked" onclick="showModal('06/07')">
+            <div class="day-box locked" id="btn-06" onclick="checkDay('06', 'amor06')">
                 <div class="day-name">Seg</div>
                 <div class="day-num">06</div>
                 <div class="status-icon">🔒</div>
             </div>
-            <div class="day-box locked" onclick="showModal('07/07')">
+            <div class="day-box locked" id="btn-07" onclick="checkDay('07', 'amor07')">
                 <div class="day-name">Ter</div>
                 <div class="day-num">07</div>
                 <div class="status-icon">🔒</div>
             </div>
-            <div class="day-box locked" onclick="showModal('08/07')">
+            <div class="day-box locked" id="btn-08" onclick="checkDay('08', 'amor08')">
                 <div class="day-name">Qua</div>
                 <div class="day-num">08</div>
                 <div class="status-icon">🔒</div>
             </div>
-            <div class="day-box locked" onclick="showModal('09/07')">
+            <div class="day-box locked" id="btn-09" onclick="checkDay('09', 'amor09')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">09</div>
                 <div class="status-icon">🔒</div>
             </div>
-            <div class="day-box locked" onclick="showModal('10/07')">
+            <div class="day-box locked" id="btn-10" onclick="checkDay('10', 'paraSempre')">
                 <div class="day-name">Sex</div>
                 <div class="day-num">10</div>
                 <div class="status-icon">❤️</div>
@@ -329,45 +426,202 @@
         </div>
     </div>
 
-    <!-- Conteúdo Principal (Dia 02/07) -->
+    <!-- Conteúdo Dinâmico -->
     <div class="main-content">
-        <h1 class="save-the-date-title">SAVE THE DATE</h1>
-        <div class="subtitle">Tudo no tempo certo...</div>
         
-        <!-- Busca Automática pela Imagem da Pasta -->
-        <div class="image-container">
-            <img src="capa0207.png" alt="Save the Date - 10.07.2026" onerror="this.style.display='none'; this.parentNode.style.background='#eae5df'; this.parentNode.innerHTML='<div style=padding-top:180px;color:#a38a75>Sua foto capa0207.png aparecerá aqui</div>'">
+        <!-- ================= DIA 02/07 (HOJE - ABERTO) ================= -->
+        <div id="content-02" class="day-content active">
+            <h1 class="save-the-date-title">SAVE THE DATE</h1>
+            <div class="subtitle">Tudo no tempo certo...</div>
+            <div class="image-container">
+                <img src="capa0207.png" alt="Save the Date">
+            </div>
+            <div class="message-box">
+                <p>Eu sei que demorou. Mas a verdade é que tudo nesta vida tem o <span class="highlight">tempo certo</span> para acontecer, e o nosso momento chegou.</p>
+                <p>Sei que as quintas-feiras costumam ser apenas a véspera do final de semana, mas a partir de hoje ela marca o início de algo histórico para nós dois.</p>
+                <p>Por mais que você <span class="highlight">já saiba o final</span> dessa história, eu tenho a absoluta certeza de que a nossa jornada ao longo desta semana será completamente <span class="highlight">inesquecível</span>.</p>
+                <p>E para começar: <span class="highlight">talvez durante o dia você receba algo, fique bem atenta!</span> 👀✨</p>
+                
+                <!-- Área Secreta com Múltiplas Senhas -->
+                <div id="secret-trigger-section" style="margin-top: 25px; padding-top: 15px; border-top: 1px dotted #ebdcd0; text-align: center;">
+                    <p style="font-size: 0.9rem; color: #8c7a6b; font-style: italic;">Encontrou uma pista secreta? Digite aqui:</p>
+                    <input type="text" id="secret-input" class="password-input" style="max-width: 250px; margin: 10px auto; display: block;" placeholder="Senha secreta especial...">
+                    <button class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem;" onclick="checkSecretKey()">Validar Pista 🎯</button>
+                </div>
+
+                <!-- Escolha do Batom Reformulada -->
+                <div class="voting-section" id="lipstick-voting" style="display: none;">
+                    <div class="voting-title">💋 MISSÃO DA BELEZA LIBERADA! 💋<br><br><span style="font-size: 1.05rem; font-weight: normal; color: #2b2420; line-height: 1.6;">E para começar... uma boca deve ser marcante!<br>Para o grande dia, escolha a cor do seu batom favorito na lista abaixo:</span></div>
+                    <div class="voting-options" style="margin-top: 15px;">
+                        <button class="vote-btn" onclick="selectLipstick('Vermelho Clínico / Clássico', this)">Vermelho Clássico 💋</button>
+                        <button class="vote-btn" onclick="selectLipstick('Nude Elegante', this)">Nude Elegante ✨</button>
+                        <button class="vote-btn" onclick="selectLipstick('Rosa Queimado', this)">Rosa Queimado 🌸</button>
+                        <button class="vote-btn" onclick="selectLipstick('Vinho / Bordô', this)">Vinho / Bordô 🍷</button>
+                        <button class="vote-btn" onclick="selectLipstick('Malva Chic', this)">Malva Chic 💜</button>
+                        <button class="vote-btn" onclick="selectLipstick('Marrom Terracota', this)">Marrom Terracota 🤎</button>
+                        <button class="vote-btn" onclick="selectLipstick('Coral Suave', this)">Coral Suave 🧡</button>
+                        <button class="vote-btn" onclick="selectLipstick('Nude Rosado', this)">Nude Rosado 🎀</button>
+                        <button class="vote-btn" onclick="selectLipstick('Vermelho Fechado / Camurça', this)">Vermelho Fechado 🌹</button>
+                        <button class="vote-btn" onclick="selectLipstick('Gloss Incolor Efeito Vinil', this)">Gloss Incolor ✨</button>
+                    </div>
+                    
+                    <!-- Botão de Envio de WhatsApp Dinâmico -->
+                    <div class="wpp-container" id="wpp-block">
+                        <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique no botão abaixo para me enviar sua escolha definitiva!</p>
+                        <a href="#" id="wpp-link" target="_blank" class="wpp-btn">
+                            Enviar Escolha por WhatsApp 💬
+                        </a>
+                    </div>
+                </div>
+
+                <p class="logistica-note">Nota do Chef: Se por acaso a logística falhar, você receberá à noite. Mas fique tranquila, porque o nosso grande dia está marcado e é na próxima sexta-feira, 10.07.2026! ❤️</p>
+                <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #2b2420;">Eu te amo!</p>
+            </div>
         </div>
 
-        <div class="message-box">
-            <p>Eu sei que demorou. Mas a verdade é que tudo nesta vida tem o <span class="highlight">tempo certo</span> para acontecer, e o nosso momento chegou.</p>
-            <p>Sei que as quintas-feiras costumam ser apenas a véspera do final de semana, mas a partir de hoje ela marca o início de algo histórico para nós dois.</p>
-            <p>Por mais que você <span class="highlight">já saiba o final</span> dessa história, eu tenho a absoluta certeza de que a nossa jornada ao longo desta semana será completamente <span class="highlight">inesquecível</span>.</p>
-            <p>E para começar: <span class="highlight">talvez durante o dia você receba algo, fique bem atenta!</span> 👀✨</p>
-            
-            <p class="logistica-note">Nota do Chef: Se por acaso a logística falhar, você receberá à noite. Mas fique tranquila, porque o nosso grande dia está marcado e é na próxima sexta-feira, 10.07.2026! ❤️</p>
-            
-            <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #2b2420;">Eu te amo!</p>
+        <!-- ================= DIA 03/07 (SEXTA-FEIRA) ================= -->
+        <div id="content-03" class="day-content">
+            <h1 class="save-the-date-title">O SEU PRÓXIMO MIMO</h1>
+            <div class="subtitle">A cor escolhida foi registrada e já está reservada...</div>
+            <div class="image-container">
+                <img src="capa0207.png" alt="Save the Date">
+            </div>
+            <div class="message-box">
+                <p>Olha só quem conseguiu quebrar mais uma tranca! A cor do batom escolhida ontem foi gravada no sistema e a sua preferência já está guardada com sucesso. 😉</p>
+                <p>Para a nossa próxima sexta-feira (<span class="highlight">10/07</span>) ser absolutamente perfeita, o roteiro geral já está desenhado: teremos nossa parada clássica na padaria pela manhã, tempo livre para arrumação e um cronograma impecável.</p>
+                <p>Mas agora precisamos definir a identidade gastronômica do grande jantar. Hoje, sua missão não é escolher os pratos específicos ainda, mas sim o **estilo do menu** que ditará as opções de segunda-feira:</p>
+                
+                <!-- Escolha do Estilo do Menu -->
+                <div class="voting-section">
+                    <div class="voting-title">🍽️ Qual vibe você prefere para o menu de Segunda-feira?</div>
+                    <div class="voting-options">
+                        <button class="vote-btn" onclick="selectMenu('Carnes Nobres', this)">Carnes Nobres 🥩</button>
+                        <button class="vote-btn" onclick="selectMenu('Massas Artesanais', this)">Massas Artesanais 🍝</button>
+                        <button class="vote-btn" onclick="selectMenu('Risotos Premium', this)">Risotos Premium 🥘</button>
+                    </div>
+                    
+                    <div class="wpp-container" id="wpp-menu-block">
+                        <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para me enviar o estilo que escolheu!</p>
+                        <a href="#" id="wpp-menu-link" target="_blank" class="wpp-btn">
+                            Enviar Voto do Cardápio 💬
+                        </a>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Aproveite o fim de semana para descansar, nos vemos na segunda! Eu te amo! ❤️</p>
+            </div>
         </div>
+
+        <!-- OUTROS DIAS -->
+        <div id="content-06" class="day-content"><h1 class="save-the-date-title">DIA 06/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Segunda-feira! Hora de escolher as opções baseadas no estilo que você votou na sexta-feira...</p></div></div>
+        <div id="content-07" class="day-content"><h1 class="save-the-date-title">DIA 07/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Terça-feira! Próxima escolha do cardápio...</p></div></div>
+        <div id="content-08" class="day-content"><h1 class="save-the-date-title">DIA 08/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Quarta-feira! Escolha da sobremesa...</p></div></div>
+        <div id="content-09" class="day-content"><h1 class="save-the-date-title">DIA 09/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>A grande véspera! Cardápio oficial montado na tela.</p></div></div>
+        <div id="content-10" class="day-content"><h1 class="save-the-date-title">10 DE JULHO DE 2026 ❤️</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p style="text-align: center; font-size: 1.2rem; font-weight: bold;">O Nosso Momento Chegou.</p></div></div>
+
     </div>
 
-    <!-- Modal de Controle de Ansiedade -->
-    <div class="modal-overlay" id="custom-modal">
+    <!-- Pop-up para inserção da senha -->
+    <div class="modal-overlay" id="password-modal">
         <div class="modal-card">
             <div class="modal-icon">🔒</div>
-            <div class="modal-title">Acesso Negado!</div>
-            <div class="modal-text">Calma, ansiosa! ❤️<br><span style="font-size: 0.85rem; color: #a38a75;">Tudo no tempo certo...</span></div>
-            <button class="modal-btn" onclick="closeModal()">Segurar a Curiosidade 🥰</button>
+            <div class="modal-title">Acesso Restrito</div>
+            <div class="modal-text">Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:</div>
+            <input type="password" id="input-pass" class="password-input" placeholder="Digite a senha secreta...">
+            <button class="modal-btn" onclick="validatePassword()">Desbloquear Dia ✨</button>
+            <button class="modal-btn" style="background: #ebdcd0; color: #6e5d4f; margin-top: 8px;" onclick="closeModal()">Voltar</button>
         </div>
     </div>
 
     <script>
-        function showModal(day) {
-            document.getElementById('custom-modal').style.display = 'flex';
+        let currentTargetDay = '';
+        let currentTargetPassword = '';
+        let unlockedDays = ['02']; 
+
+        // Validação da senha secreta da quinta-feira
+        function checkSecretKey() {
+            const val = document.getElementById('secret-input').value.trim().toLowerCase();
+            if(val === 'memphis depay' || val === 'memphisdepay' || val === 'depay') {
+                document.getElementById('lipstick-voting').style.display = 'block';
+                document.getElementById('secret-trigger-section').style.display = 'none';
+                alert('Caramba, você descobriu! 💄 Escolha a sua cor favorita abaixo.');
+            } else {
+                alert('Pista incorreta! Tente novamente... 🤫');
+            }
+        }
+
+        // Seleção do batom e geração do Link do WhatsApp
+        function selectLipstick(color, button) {
+            const buttons = button.parentElement.querySelectorAll('.vote-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            button.classList.add('selected');
+
+            // Monta a mensagem misteriosa para o WhatsApp
+            const message = encodeURIComponent("Prontinho, meu amor! Acabei de quebrar o sistema do site e já escolhi a cor perfeita do batom para o nosso grande dia: *" + color + "*! 💄✨ Minha boca vai estar marcante. Eu te amo!");
+            
+            const url = "https://wa.me/?text=" + message;
+            document.getElementById('wpp-link').href = url;
+            document.getElementById('wpp-block').style.display = 'block';
+            
+            alert('Cor "' + color + '" selecionada! Clique no botão verde abaixo para me mandar por WhatsApp! 🥰');
+        }
+
+        // Seleção do Menu (Sexta-feira)
+        function selectMenu(style, button) {
+            const buttons = button.parentElement.querySelectorAll('.vote-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            button.classList.add('selected');
+
+            const message = encodeURIComponent("Acabei de ver o cronograma e já votei na vibe gastronômica de segunda-feira! Escolhi: *" + style + "*! 🍽️✨ Que comece o nosso próximo capítulo!");
+            const url = "https://wa.me/?text=" + message;
+            document.getElementById('wpp-menu-link').href = url;
+            document.getElementById('wpp-menu-block').style.display = 'block';
+
+            alert('Voto registrado! Clique no botão verde abaixo para me avisar pelo WhatsApp! 🙌');
+        }
+
+        function checkDay(day, password) {
+            if (unlockedDays.includes(day)) {
+                switchDay(day);
+                return;
+            }
+            currentTargetDay = day;
+            currentTargetPassword = password;
+            document.getElementById('input-pass').value = '';
+            document.getElementById('password-modal').style.display = 'flex';
+        }
+
+        function validatePassword() {
+            const typedPassword = document.getElementById('input-pass').value;
+            
+            if (typedPassword === currentTargetPassword) {
+                unlockedDays.push(currentTargetDay);
+                
+                const btn = document.getElementById('btn-' + currentTargetDay);
+                btn.classList.remove('locked');
+                btn.classList.add('unlocked');
+                btn.querySelector('.status-icon').innerText = currentTargetDay === '10' ? '❤️' : '🔓';
+                
+                closeModal();
+                switchDay(currentTargetDay);
+            } else {
+                alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
+            }
+        }
+
+        function switchDay(day) {
+            const contents = document.querySelectorAll('.day-content');
+            contents.forEach(c => c.classList.remove('active'));
+            
+            const targetContent = document.getElementById('content-' + day);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         }
 
         function closeModal() {
-            document.getElementById('custom-modal').style.display = 'none';
+            document.getElementById('password-modal').style.none;
+            document.getElementById('password-modal').style.display = 'none';
         }
     </script>
 </body>
