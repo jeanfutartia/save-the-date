@@ -260,6 +260,26 @@
             border-color: #2b2420;
         }
 
+        /* Caixa de Texto Livre */
+        .custom-notes-textarea {
+            width: 100%;
+            height: 80px;
+            margin-top: 15px;
+            padding: 12px;
+            border: 1px solid #ebdcd0;
+            border-radius: 8px;
+            background: #faf6f0;
+            font-size: 0.95rem;
+            color: #2b2420;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .custom-notes-textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
         /* Botão do WhatsApp Especial */
         .wpp-container {
             margin-top: 20px;
@@ -391,37 +411,37 @@
             <div class="day-box unlocked" id="btn-02" onclick="switchDay('02')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">02</div>
-                <div class="status-icon">🔓</div>
+                <div class="status-icon" id="status-02">🔓</div>
             </div>
-            <div class="day-box locked" id="btn-03" onclick="checkDay('03', 'amor03')">
+            <div class="day-box locked" id="btn-03" onclick="checkDay('03', 'FRED_MORENA_TRIGGER')">
                 <div class="day-name">Sex</div>
                 <div class="day-num">03</div>
-                <div class="status-icon">🔒</div>
+                <div class="status-icon" id="status-03">🔒</div>
             </div>
             <div class="day-box locked" id="btn-06" onclick="checkDay('06', 'amor06')">
                 <div class="day-name">Seg</div>
                 <div class="day-num">06</div>
-                <div class="status-icon">🔒</div>
+                <div class="status-icon" id="status-06">🔒</div>
             </div>
             <div class="day-box locked" id="btn-07" onclick="checkDay('07', 'amor07')">
                 <div class="day-name">Ter</div>
                 <div class="day-num">07</div>
-                <div class="status-icon">🔒</div>
+                <div class="status-icon" id="status-07">🔒</div>
             </div>
             <div class="day-box locked" id="btn-08" onclick="checkDay('08', 'amor08')">
                 <div class="day-name">Qua</div>
                 <div class="day-num">08</div>
-                <div class="status-icon">🔒</div>
+                <div class="status-icon" id="status-08">🔒</div>
             </div>
             <div class="day-box locked" id="btn-09" onclick="checkDay('09', 'amor09')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">09</div>
-                <div class="status-icon">🔒</div>
+                <div class="status-icon" id="status-09">🔒</div>
             </div>
-            <div class="day-box locked" id="btn-10" onclick="checkDay('10', 'paraSempre')">
+            <div class="day-box locked" id="btn-10" onclick="checkDay('10', 'paraSForever')">
                 <div class="day-name">Sex</div>
                 <div class="day-num">10</div>
-                <div class="status-icon">❤️</div>
+                <div class="status-icon" id="status-10">❤️</div>
             </div>
         </div>
     </div>
@@ -442,14 +462,12 @@
                 <p>Por mais que você <span class="highlight">já saiba o final</span> dessa história, eu tenho a absoluta certeza de que a nossa jornada ao longo desta semana será completamente <span class="highlight">inesquecível</span>.</p>
                 <p>E para começar: <span class="highlight">talvez durante o dia você receba algo, fique bem atenta!</span> 👀✨</p>
                 
-                <!-- Área Secreta com Múltiplas Senhas -->
                 <div id="secret-trigger-section" style="margin-top: 25px; padding-top: 15px; border-top: 1px dotted #ebdcd0; text-align: center;">
                     <p style="font-size: 0.9rem; color: #8c7a6b; font-style: italic;">Encontrou uma pista secreta? Digite aqui:</p>
                     <input type="text" id="secret-input" class="password-input" style="max-width: 250px; margin: 10px auto; display: block;" placeholder="Senha secreta especial...">
                     <button class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem;" onclick="checkSecretKey()">Validar Pista 🎯</button>
                 </div>
 
-                <!-- Escolha do Batom Reformulada -->
                 <div class="voting-section" id="lipstick-voting" style="display: none;">
                     <div class="voting-title">💋 MISSÃO DA BELEZA LIBERADA! 💋<br><br><span style="font-size: 1.05rem; font-weight: normal; color: #2b2420; line-height: 1.6;">E para começar... uma boca deve ser marcante!<br>Para o grande dia, escolha a cor do seu batom favorito na lista abaixo:</span></div>
                     <div class="voting-options" style="margin-top: 15px;">
@@ -465,7 +483,6 @@
                         <button class="vote-btn" onclick="selectLipstick('Gloss Incolor Efeito Vinil', this)">Gloss Incolor ✨</button>
                     </div>
                     
-                    <!-- Botão de Envio de WhatsApp Dinâmico -->
                     <div class="wpp-container" id="wpp-block">
                         <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique no botão abaixo para me enviar sua escolha definitiva!</p>
                         <a href="#" id="wpp-link" target="_blank" class="wpp-btn">
@@ -481,42 +498,117 @@
 
         <!-- ================= DIA 03/07 (SEXTA-FEIRA) ================= -->
         <div id="content-03" class="day-content">
-            <h1 class="save-the-date-title">O SEU PRÓXIMO MIMO</h1>
-            <div class="subtitle">A cor escolhida foi registrada e já está reservada...</div>
+            <h1 class="save-the-date-title">O NOSSO ALICERCE</h1>
+            <div class="subtitle">Definindo o rumo do grande jantar...</div>
             <div class="image-container">
                 <img src="capa0207.png" alt="Save the Date">
             </div>
             <div class="message-box">
-                <p>Olha só quem conseguiu quebrar mais uma tranca! A cor do batom escolhida ontem foi gravada no sistema e a sua preferência já está guardada com sucesso. 😉</p>
-                <p>Para a nossa próxima sexta-feira (<span class="highlight">10/07</span>) ser absolutamente perfeita, o roteiro geral já está desenhado: teremos nossa parada clássica na padaria pela manhã, tempo livre para arrumação e um cronograma impecável.</p>
-                <p>Mas agora precisamos definir a identidade gastronômica do grande jantar. Hoje, sua missão não é escolher os pratos específicos ainda, mas sim o **estilo do menu** que ditará as opções de segunda-feira:</p>
+                <p>Parabéns por abrir a tranca de sexta-feira! Espero que tenha gostado do batom e do Body Splash ontem à noite. Ver suas escolhas se materializando no mundo real é a melhor parte disso tudo.</p>
+                <p>O dia de hoje carrega um significado profundo sobre nós. Trata-se de conexões reais, do nosso lar e de pequenas patinhas que marcam a nossa vida. Há um simbolismo forte sobre a nossa cumplicidade diária, mas também sobre amores puros que transcendem o próprio tempo e espaço, deixando saudades eternas em nossos corações. ✨🐾</p>
+                <p>Fique bem atenta ao longo do dia... algo especial com esse significado pode cruzar o seu caminho a qualquer momento.</p>
                 
-                <!-- Escolha do Estilo do Menu -->
-                <div class="voting-section">
-                    <div class="voting-title">🍽️ Qual vibe você prefere para o menu de Segunda-feira?</div>
+                <div style="background: #fff9e6; padding: 15px; border-radius: 8px; border-left: 4px solid #d4af37; margin: 20px 0;">
+                    <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: #5c4831;">
+                        ⚠️ <span class="highlight">Atenção, ansiosa:</span> Isto ainda <strong>não</strong> é a escolha dos pratos finais! O cardápio do nosso jantar especial do dia <strong>10/07</strong> será construído e decidido por você <strong>ponto a ponto ao longo da semana que vem</strong>. A missão de hoje é apenas definir a grande linha culinária que ditará as opções a partir de segunda-feira.
+                    </p>
+                </div>
+
+                <p>Para liberar a enquete e votar na identidade gastronômica do nosso jantar de sexta que vem, digite abaixo o nome do companheiro de quatro patas que comanda a casa:</p>
+                
+                <div id="lucky-trigger-section" style="margin-top: 20px; text-align: center;">
+                    <input type="text" id="lucky-input" class="password-input" style="max-width: 250px; margin: 10px auto; display: block;" placeholder="Nome do companheiro de 4 patas...">
+                    <button class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem;" onclick="checkLuckyKey()">Liberar Opções de Estilo 🔓</button>
+                </div>
+
+                <div class="voting-section" id="menu-voting" style="display: none;">
+                    <div class="voting-title">🍽️ Escolha a Linha Gastronômica Base (O cardápio será detalhado ponto a ponto semana que vem):</div>
                     <div class="voting-options">
-                        <button class="vote-btn" onclick="selectMenu('Carnes Nobres', this)">Carnes Nobres 🥩</button>
-                        <button class="vote-btn" onclick="selectMenu('Massas Artesanais', this)">Massas Artesanais 🍝</button>
-                        <button class="vote-btn" onclick="selectMenu('Risotos Premium', this)">Risotos Premium 🥘</button>
+                        <button class="vote-btn" id="opt-1" onclick="setMenuStyle('Carnes & Massas')">Carnes & Massas 🥩🍝</button>
+                        <button class="vote-btn" id="opt-2" onclick="setMenuStyle('Risotos Premium')">Risotos Premium 🥘✨</button>
+                        <button class="vote-btn" id="opt-3" onclick="setMenuStyle('Salmão & Frutos do Mar')">Salmão & Frutos do Mar 🐟🥂</button>
+                        <button class="vote-btn" id="opt-4" onclick="setMenuStyle('Saladas Especiais & Massas Leves')">Saladas & Massas Leves 🥗🍝</button>
+                        <button class="vote-btn" id="opt-5" onclick="setMenuStyle('Frango Grelhado & Massas Finas')">Frango & Massas Finas 🍗🍝</button>
+                        <button class="vote-btn" id="opt-6" onclick="setMenuStyle('Comida Caseira Confortável / Premium')">Comidinha Caseira Premium 🍛❤️</button>
                     </div>
                     
-                    <div class="wpp-container" id="wpp-menu-block">
-                        <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para me enviar o estilo que escolheu!</p>
+                    <div style="margin-top: 20px; text-align: left;">
+                        <label for="menu-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Desejos adicionais, ideias ou restrições para esse estilo? Escreva aqui: 👀</label>
+                        <textarea id="menu-custom-notes" class="custom-notes-textarea" placeholder="Ex: Capricha no queijo, sem cebola, quero molho branco..." oninput="updateMenuWppLink()"></textarea>
+                    </div>
+                    
+                    <div class="wpp-container" id="wpp-menu-block" style="margin-top: 25px;">
+                        <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para me enviar a base do cardápio escolhida!</p>
                         <a href="#" id="wpp-menu-link" target="_blank" class="wpp-btn">
-                            Enviar Voto do Cardápio 💬
+                            Enviar Estilo do Jantar (10/07) por WhatsApp 💬
                         </a>
                     </div>
                 </div>
 
-                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Aproveite o fim de semana para descansar, nos vemos na segunda! Eu te amo! ❤️</p>
+                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Aproveite o final de semana para descansar. Eu te amo daqui até o além! ❤️</p>
+            </div>
+        </div>
+
+        <!-- ================= DIA 06/07 (SEGUNDA-FEIRA) ================= -->
+        <div id="content-06" class="day-content">
+            <h1 class="save-the-date-title">MONTAGEM DO CARDÁPIO</h1>
+            <div class="subtitle">Hoje não tem presente físico... mas o jogo continua!</div>
+            <div class="image-container">
+                <img src="capa0207.png" alt="Save the Date">
+            </div>
+            <div class="message-box">
+                <p>Bem-vinda a mais uma semana! Espero que tenha descansado bastante no sábado e domingo, porque a contagem regressiva para o nosso grande <span class="highlight">jantar de 10/07</span> entrou na reta final.</p>
+                <p>Hoje <span class="highlight">não temos nenhum mimo físico</span> chegando por aí... mais acalme esse coração ansioso, porque as surpresas maiores ainda estão por vir ao longo dos próximos dias!</p>
+                <p>Chegou a hora de começar a definir nosso menu ponto a ponto. Sabendo a linha gastronômica que você escolheu na sexta-feira, o seu papel hoje é decidir **qual será a nossa Entrada oficial**:</p>
+                
+                <div class="voting-section">
+                    <div class="voting-title">🥗 Qual será a Entrada para o Jantar de 10/07?</div>
+                    <div class="voting-options">
+                        <button class="vote-btn" onclick="selectEntrance('Brusquetas Italianas Caprichadas', this)">Brusquetas Italianas 🥖🍅</button>
+                        <button class="vote-btn" onclick="selectEntrance('Salada Caprese com Pesto Premium', this)">Salada Caprese Clássica 🥗🧀</button>
+                        <button class="vote-btn" onclick="selectEntrance('Tábua Fina de Queijos & Frios', this)">Tábua de Frios Selecionados 🧀🍇</button>
+                        <button class="vote-btn" onclick="selectEntrance('Cestinha de Pães com Patês Especiais', this)">Pães & Antepastos do Chef 🥖🍯</button>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: left;">
+                        <label for="entrance-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Algum toque especial para a entrada? Escreva aqui ou deixe sugestões: 🖋️</label>
+                        <textarea id="entrance-custom-notes" class="custom-notes-textarea" placeholder="Ex: Adoro manjericão, prefiro queijo brie, capricha no azeite..." oninput="updateEntranceWppLink()"></textarea>
+                    </div>
+                </div>
+
+                <div id="salon-trigger-section" style="margin-top: 30px; padding-top: 20px; border-top: 2px dashed #d4af37; text-align: center;">
+                    <p style="font-weight: 600; color: #2b2420; margin-bottom: 5px;">Ahhhhh... achou mesmo que não teria presente hoje? 🤭</p>
+                    <p style="font-size: 0.95rem; color: #4a3e36; margin-bottom: 15px;">Eu simplesmente não me aguento! Mas para liberar o mimo de hoje, você vai ter que provar sua boa memória. Digite a senha correta:</p>
+                    <p style="font-size: 0.85rem; color: #8c7a6b; font-style: italic; margin-bottom: 10px;">💡 Dica: A data em que o nosso namoro começou oficialmente (Dica extra: use apenas números, ex: DDMM).</p>
+                    <input type="text" id="salon-input" class="password-input" style="max-width: 250px; margin: 10px auto; display: block;" placeholder="Digite a data do namoro...">
+                    <button class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem; background: #2b2420; color: #ffffff;" onclick="checkSalonKey()">Validar Memória 🎯</button>
+                    <p style="font-size: 0.75rem; color: #cc0000; margin-top: 8px; font-style: italic;">🚨 Atenção: Se errar essa senha, o site inteiro será permanentemente excluído! rs</p>
+                </div>
+
+                <div class="voting-section" id="salon-voting" style="display: none; border-color: #25d366; background: #f7fdf9;">
+                    <div class="voting-title" style="color: #128c7e;">💅 PRESENTE DISPONÍVEL: SEU DIA DE SALÃO! 💅<br><br><span style="font-size: 0.95rem; font-weight: normal; color: #2b2420; line-height: 1.6;">Ufa, que alívio! Sua memória está ótima (e o site continua vivo!). Você ganhou um momento especial para fazer <strong>Manicure & Pedicure</strong> para ficar ainda mais maravilhosa para o dia 10! Escolha o melhor dia para você marcar na sua agenda:</span></div>
+                    <div class="voting-options" style="margin-top: 15px;">
+                        <button class="vote-btn" onclick="selectSalonDay('Quarta-feira (08/07)', this)">Quarta-feira 💅</button>
+                        <button class="vote-btn" onclick="selectSalonDay('Quinta-feira (09/07)', this)">Quinta-feira ✨</button>
+                        <button class="vote-btn" onclick="selectSalonDay('Sexta-feira (10/07 - de dia)', this)">Sexta-feira (O grande dia!) 👑</button>
+                    </div>
+                </div>
+
+                <div class="wpp-container" id="wpp-monday-block" style="margin-top: 25px;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para me enviar suas escolhas da Segunda-feira!</p>
+                    <a href="#" id="wpp-monday-link" target="_blank" class="wpp-btn">
+                        Enviar Escolhas da Segunda por WhatsApp 💬
+                    </a>
+                </div>
+
+                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Eu te amo! Até amanhã... ❤️</p>
             </div>
         </div>
 
         <!-- OUTROS DIAS -->
-        <div id="content-06" class="day-content"><h1 class="save-the-date-title">DIA 06/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Segunda-feira! Hora de escolher as opções baseadas no estilo que você votou na sexta-feira...</p></div></div>
-        <div id="content-07" class="day-content"><h1 class="save-the-date-title">DIA 07/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Terça-feira! Próxima escolha do cardápio...</p></div></div>
-        <div id="content-08" class="day-content"><h1 class="save-the-date-title">DIA 08/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Quarta-feira! Escolha da sobremesa...</p></div></div>
-        <div id="content-09" class="day-content"><h1 class="save-the-date-title">DIA 09/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>A grande véspera! Cardápio oficial montado na tela.</p></div></div>
+        <div id="content-07" class="day-content"><h1 class="save-the-date-title">DIA 07/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Terça-feira! Próxima escolha detalhada do cardápio...</p></div></div>
+        <div id="content-08" class="day-content"><h1 class="save-the-date-title">DIA 08/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Quarta-feira! Escolha detalhada da sobremesa...</p></div></div>
+        <div id="content-09" class="day-content"><h1 class="save-the-date-title">DIA 09/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>A grande véspera! Cardápio ponto a ponto oficial montado na tela.</p></div></div>
         <div id="content-10" class="day-content"><h1 class="save-the-date-title">10 DE JULHO DE 2026 ❤️</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p style="text-align: center; font-size: 1.2rem; font-weight: bold;">O Nosso Momento Chegou.</p></div></div>
 
     </div>
@@ -526,7 +618,7 @@
         <div class="modal-card">
             <div class="modal-icon">🔒</div>
             <div class="modal-title">Acesso Restrito</div>
-            <div class="modal-text">Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:</div>
+            <div class="modal-text" id="modal-instruction-text">Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:</div>
             <input type="password" id="input-pass" class="password-input" placeholder="Digite a senha secreta...">
             <button class="modal-btn" onclick="validatePassword()">Desbloquear Dia ✨</button>
             <button class="modal-btn" style="background: #ebdcd0; color: #6e5d4f; margin-top: 8px;" onclick="closeModal()">Voltar</button>
@@ -536,9 +628,25 @@
     <script>
         let currentTargetDay = '';
         let currentTargetPassword = '';
-        let unlockedDays = ['02']; 
+        
+        let selectedEntrance = '';
+        let selectedSalonDay = '';
+        let salonUnlocked = false;
 
-        // Validação da senha secreta da quinta-feira
+        let unlockedDays = JSON.parse(localStorage.getItem('saveTheDateUnlocked')) || ['02']; 
+
+        window.onload = function() {
+            unlockedDays.forEach(day => {
+                const btn = document.getElementById('btn-' + day);
+                if (btn) {
+                    btn.classList.remove('locked');
+                    btn.classList.add('unlocked');
+                    const icon = document.getElementById('status-' + day);
+                    if (icon) icon.innerText = day === '10' ? '❤️' : '🔓';
+                }
+            });
+        };
+
         function checkSecretKey() {
             const val = document.getElementById('secret-input').value.trim().toLowerCase();
             if(val === 'memphis depay' || val === 'memphisdepay' || val === 'depay') {
@@ -550,34 +658,91 @@
             }
         }
 
-        // Seleção do batom e geração do Link do WhatsApp
+        function checkLuckyKey() {
+            const val = document.getElementById('lucky-input').value.trim().toLowerCase();
+            if(val === 'lucky') {
+                document.getElementById('menu-voting').style.display = 'block';
+                document.getElementById('lucky-trigger-section').style.display = 'none';
+                alert('Acertou! 🐾 Estilos de cardápio liberados.');
+            } else {
+                alert('Incorreto! Quem é o dono das patinhas que comanda a nossa casa? 🤫');
+            }
+        }
+
+        function checkSalonKey() {
+            const val = document.getElementById('salon-input').value.trim();
+            if(val.length >= 2) { 
+                document.getElementById('salon-voting').style.display = 'block';
+                document.getElementById('salon-trigger-section').style.display = 'none';
+                salonUnlocked = true;
+                alert('Ufa! Quase que o site foi excluído! 💅 Menu do salão liberado com sucesso.');
+                updateMondayWppLink();
+            } else {
+                alert('Data inválida! Digite com calma para não apagar o sistema... 🤫');
+            }
+        }
+
         function selectLipstick(color, button) {
             const buttons = button.parentElement.querySelectorAll('.vote-btn');
             buttons.forEach(b => b.classList.remove('selected'));
             button.classList.add('selected');
 
-            // Monta a mensagem misteriosa para o WhatsApp
             const message = encodeURIComponent("Prontinho, meu amor! Acabei de quebrar o sistema do site e já escolhi a cor perfeita do batom para o nosso grande dia: *" + color + "*! 💄✨ Minha boca vai estar marcante. Eu te amo!");
-            
             const url = "https://wa.me/?text=" + message;
             document.getElementById('wpp-link').href = url;
             document.getElementById('wpp-block').style.display = 'block';
-            
             alert('Cor "' + color + '" selecionada! Clique no botão verde abaixo para me mandar por WhatsApp! 🥰');
         }
 
-        // Seleção do Menu (Sexta-feira)
-        function selectMenu(style, button) {
+        function setMenuStyle(style) {
+            selectedMenuStyle = style;
+            const buttons = document.querySelectorAll('#menu-voting .voting-options .vote-btn');
+            buttons.forEach(b => {
+                if(b.innerText.includes(style)) b.classList.add('selected');
+                else b.classList.remove('selected');
+            });
+            updateMenuWppLink();
+            document.getElementById('wpp-menu-block').style.display = 'block';
+        }
+
+        function updateMenuWppLink() {
+            if (!selectedMenuStyle) return;
+            const customText = document.getElementById('menu-custom-notes').value.trim();
+            let finalMessage = "Escolhi a linha base para o jantar de 10/07: *" + selectedMenuStyle + "*! 🍽️✨ Sei que vamos definir os pratos ponto a ponto semana que vem, mas já quis garantir o estilo!\n\n";
+            if(customText) finalMessage += "Deixei essa nota com meus desejos extras: _\"" + customText + "\"_ 📝❤️";
+            document.getElementById('wpp-menu-link').href = "https://wa.me/?text=" + encodeURIComponent(finalMessage);
+        }
+
+        function selectEntrance(entrance, button) {
+            selectedEntrance = entrance;
             const buttons = button.parentElement.querySelectorAll('.vote-btn');
             buttons.forEach(b => b.classList.remove('selected'));
             button.classList.add('selected');
+            updateMondayWppLink();
+        }
 
-            const message = encodeURIComponent("Acabei de ver o cronograma e já votei na vibe gastronômica de segunda-feira! Escolhi: *" + style + "*! 🍽️✨ Que comece o nosso próximo capítulo!");
-            const url = "https://wa.me/?text=" + message;
-            document.getElementById('wpp-menu-link').href = url;
-            document.getElementById('wpp-menu-block').style.display = 'block';
+        function selectSalonDay(day, button) {
+            selectedSalonDay = day;
+            const buttons = button.parentElement.querySelectorAll('.vote-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            button.classList.add('selected');
+            updateMondayWppLink();
+        }
 
-            alert('Voto registrado! Clique no botão verde abaixo para me avisar pelo WhatsApp! 🙌');
+        function updateMondayWppLink() {
+            if (!selectedEntrance) return;
+            const customNotes = document.getElementById('entrance-custom-notes').value.trim();
+            let msg = "Passando para enviar minhas escolhas de Segunda-feira! 🗓️✨\n\n";
+            msg += "🥗 *Entrada Escolhida:* " + selectedEntrance + "\n";
+            if(customNotes) msg += "📝 *Nota sobre a entrada:* _\"" + customNotes + "\"_\n";
+            if(salonUnlocked && selectedSalonDay) msg += "💅 *Dia preferido para o Salão:* " + selectedSalonDay + " (Ganhei o presente! 😍)\n";
+            msg += "\nMal posso esperar pelos próximos dias do nosso Save the Date! Te amo! ❤️";
+            document.getElementById('wpp-monday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
+            document.getElementById('wpp-monday-block').style.display = 'block';
+        }
+
+        function updateEntranceWppLink() {
+            updateMondayWppLink();
         }
 
         function checkDay(day, password) {
@@ -588,39 +753,65 @@
             currentTargetDay = day;
             currentTargetPassword = password;
             document.getElementById('input-pass').value = '';
+            
+            // Texto dinâmico para o modal dependendo do dia
+            const instructionLabel = document.getElementById('modal-instruction-text');
+            if (day === '03') {
+                instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles (juntos ou separados):";
+            } else {
+                instructionLabel.innerText = "Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:";
+            }
+            
             document.getElementById('password-modal').style.display = 'flex';
         }
 
         function validatePassword() {
-            const typedPassword = document.getElementById('input-pass').value;
+            const typedPassword = document.getElementById('input-pass').value.trim().toLowerCase();
+            let isValid = false;
+
+            // Validação customizada e flexível para o Dia 03
+            if (currentTargetDay === '03') {
+                if (typedPassword === 'fredemorena' || 
+                    typedPassword === 'fred e morena' || 
+                    typedPassword === 'fredmorena' || 
+                    typedPassword === 'fred morena') {
+                    isValid = true;
+                }
+            } else {
+                // Outros dias mantêm senhas padrão temporárias
+                if (typedPassword === currentTargetPassword) {
+                    isValid = true;
+                }
+            }
             
-            if (typedPassword === currentTargetPassword) {
-                unlockedDays.push(currentTargetDay);
-                
+            if (isValid) {
+                if (!unlockedDays.includes(currentTargetDay)) {
+                    unlockedDays.push(currentTargetDay);
+                    localStorage.setItem('saveTheDateUnlocked', JSON.stringify(unlockedDays));
+                }
                 const btn = document.getElementById('btn-' + currentTargetDay);
                 btn.classList.remove('locked');
                 btn.classList.add('unlocked');
-                btn.querySelector('.status-icon').innerText = currentTargetDay === '10' ? '❤️' : '🔓';
-                
+                document.getElementById('status-' + currentTargetDay).innerText = currentTargetDay === '10' ? '❤️' : '🔓';
                 closeModal();
                 switchDay(currentTargetDay);
             } else {
-                alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
+                if (currentTargetDay === '03') {
+                    alert('Chave Incorreta! Olhe com carinho para o seu coração... quem são os dois anjinhos de quatro patas? 🤫🐾');
+                } else {
+                    alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
+                }
             }
         }
 
         function switchDay(day) {
             const contents = document.querySelectorAll('.day-content');
             contents.forEach(c => c.classList.remove('active'));
-            
             const targetContent = document.getElementById('content-' + day);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
+            if (targetContent) targetContent.classList.add('active');
         }
 
         function closeModal() {
-            document.getElementById('password-modal').style.none;
             document.getElementById('password-modal').style.display = 'none';
         }
     </script>
