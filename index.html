@@ -561,6 +561,7 @@
                 <p>Hoje <span class="highlight">não temos nenhum mimo físico</span> chegando por aí... mas acalme esse coração ansioso, porque as surpresas maiores ainda estão por vir ao longo dos próximos dias!</p>
                 <p>Chegou a hora de começar a definir nosso menu ponto a ponto. Como você escolheu o estilo de <span class="highlight">Risotos Premium</span>, o seu papel hoje é decidir **qual será a nossa Entrada oficial** para abrir o apetite:</p>
                 
+                <!-- Escolha da Entrada Personalizada para Risotos -->
                 <div class="voting-section">
                     <div class="voting-title">🥗 Qual será a Entrada para o Jantar de 10/07?</div>
                     <div class="voting-options">
@@ -759,7 +760,7 @@
             if (day === '03') {
                 instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles (juntos ou separados):";
             } else if (day === '06') {
-                instructionLabel.innerHTML = "🎤 <strong>Chave de Acesso:</strong> Para abrir a segunda-feira, qual é o nome daquela banda/grupo musical que mexe com as nossas estruturas?";
+                instructionLabel.innerHTML = "🎤 <strong>Chave de Acesso:</strong> Sabe aquele primeiro show que eu te levei, lembra qual é?";
             } else {
                 instructionLabel.innerText = "Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:";
             }
@@ -779,7 +780,6 @@
                     isValid = true;
                 }
             } else if (currentTargetDay === '06') {
-                // Validação extremamente flexível para o Sampa Crew
                 if (typedPassword === 'sampacrew' || 
                     typedPassword === 'sampa crew' || 
                     typedPassword === 'sampacrewgrupo' || 
