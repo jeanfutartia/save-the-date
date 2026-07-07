@@ -423,7 +423,7 @@
                 <div class="day-num">06</div>
                 <div class="status-icon" id="status-06">🔒</div>
             </div>
-            <div class="day-box locked" id="btn-07" onclick="checkDay('07', 'amor07')">
+            <div class="day-box locked" id="btn-07" onclick="checkDay('07', 'HARRY_POTTER_TRIGGER')">
                 <div class="day-name">Ter</div>
                 <div class="day-num">07</div>
                 <div class="status-icon" id="status-07">🔒</div>
@@ -506,7 +506,6 @@
             <div class="message-box">
                 <p>Parabéns por abrir a tranca de sexta-feira! Espero que tenha gostado do batom e do Body Splash ontem à noite. Ver suas escolhas se materializando no mundo real é a melhor parte disso tudo.</p>
                 <p>O dia de hoje carrega um significado profundo sobre nós. Trata-se de conexões reais, do nosso lar e de pequenas patinhas que marcam a nossa vida. Há um simbolismo forte sobre a nossa cumplicidade diária, mas também sobre amores puros que transcendem o próprio tempo e espaço, deixando saudades eternas em nossos corações. ✨🐾</p>
-                <p>Fique bem atenta ao longo do dia... algo especial com esse significado pode cruzar o seu caminho a qualquer momento.</p>
                 
                 <div style="background: #fff9e6; padding: 15px; border-radius: 8px; border-left: 4px solid #d4af37; margin: 20px 0;">
                     <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: #5c4831;">
@@ -549,7 +548,7 @@
             </div>
         </div>
 
-        <!-- ================= DIA 06/07 (SEGUNDA-FEIRA) ================= -->
+        <!-- ================= DIA 06/07 ================= -->
         <div id="content-06" class="day-content">
             <h1 class="save-the-date-title">MONTAGEM DO CARDÁPIO</h1>
             <div class="subtitle">Hoje não tem presente físico... mas o jogo continua!</div>
@@ -561,7 +560,6 @@
                 <p>Hoje <span class="highlight">não temos nenhum mimo físico</span> chegando por aí... mas acalme esse coração ansioso, porque as surpresas maiores ainda estão por vir ao longo dos próximos dias!</p>
                 <p>Chegou a hora de começar a definir nosso menu ponto a ponto. Como você escolheu o estilo de <span class="highlight">Risotos Premium</span>, o seu papel hoje é decidir **qual será a nossa Entrada oficial** para abrir o apetite:</p>
                 
-                <!-- Escolha da Entrada Personalizada para Risotos -->
                 <div class="voting-section">
                     <div class="voting-title">🥗 Qual será a Entrada para o Jantar de 10/07?</div>
                     <div class="voting-options">
@@ -582,7 +580,7 @@
                     <p style="font-size: 0.95rem; color: #4a3e36; margin-bottom: 15px;">Eu simplesmente não me aguento! Mas para liberar o mimo de hoje, você vai ter que provar sua boa memória. Digite a senha correta:</p>
                     <p style="font-size: 0.85rem; color: #8c7a6b; font-style: italic; margin-bottom: 10px;">💡 Dica: A data em que o nosso namoro começou oficialmente (Dica extra: use apenas números no formato DDMMYY).</p>
                     <input type="text" id="salon-input" class="password-input" style="max-width: 250px; margin: 10px auto; display: block;" placeholder="Digite a data do namoro...">
-                    <button class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem; background: #2b2420; color: #ffffff;" onclick="checkSalonKey()">Validar Memória 🎯</button>
+                    <input type="button" class="vote-btn" style="padding: 8px 20px; font-size: 0.9rem; background: #2b2420; color: #ffffff;" value="Validar Memória 🎯" onclick="checkSalonKey()">
                     <p style="font-size: 0.75rem; color: #cc0000; margin-top: 8px; font-style: italic;">🚨 Atenção: Se errar essa senha, o site inteiro será permanentemente excluído! rs</p>
                 </div>
 
@@ -607,8 +605,46 @@
             </div>
         </div>
 
+        <!-- ================= DIA 07/07 (TERÇA-FEIRA) ================= -->
+        <div id="content-07" class="day-content">
+            <h1 class="save-the-date-title">A HARMONIZAÇÃO PERFEITA</h1>
+            <div class="subtitle">A escolha da bebida para o nosso risoto!</div>
+            <div class="image-container">
+                <img src="capa0207.png" alt="Save the Date">
+            </div>
+            <div class="message-box">
+                <p>Terça-feira! Ontem definimos a entrada e garantimos o seu momento de salão. Hoje o clima está mais <span class="highlight">light e tranquilo</span>, sem presentes físicos e sem missões extras... o foco é puramente o nosso paladar! 🥂</p>
+                <p>Um bom Risoto Premium exige o acompanhamento ideal para elevar a experiência gastronômica. Sabendo que você gosta de opções mais adocicadas e leves, hoje a sua missão é definir **qual será a bebida oficial da nossa noite especial**:</p>
+                
+                <!-- Escolha da Bebida Suave -->
+                <div class="voting-section">
+                    <div class="voting-title">🍾 Escolha a Bebida para o Jantar de 10/07:</div>
+                    <div class="voting-options">
+                        <button class="vote-btn" onclick="selectDrink('Vinho Tinto Suave Quinta do Morgado', this)">Tinto Suave (Quinta do Morgado) 🍷❤️</button>
+                        <button class="vote-btn" onclick="selectDrink('Vinho Branco Suave Quinta do Morgado', this)">Branco Suave (Quinta do Morgado) 🥂✨</button>
+                        <button class="vote-btn" onclick="selectDrink('Vinho Rosé Suave Selecionado', this)">Vinho Rosé Suave 🌹🥂</button>
+                        <button class="vote-btn" onclick="selectDrink('Outra Bebida (Suco Premium, Refrigerante ou Drink sem Álcool)', this)">Outra Opção (Suco/Refri/Sem Álcool) 🍹🥤</button>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: left;">
+                        <label for="drink-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Deseja alguma marca específica ou tem outra ideia de bebida? Digite aqui: 🖊️</label>
+                        <textarea id="drink-custom-notes" class="custom-notes-textarea" placeholder="Ex: Adoro aquele frisante específico, prefiro suco de uva integral geladinho..." oninput="updateDrinkWppLink()"></textarea>
+                    </div>
+                </div>
+
+                <!-- Botão do WhatsApp para Terça -->
+                <div class="wpp-container" id="wpp-tuesday-block" style="margin-top: 25px;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para salvar e me enviar a sua escolha de hoje!</p>
+                    <a href="#" id="wpp-tuesday-link" target="_blank" class="wpp-btn">
+                        Enviar Escolha da Terça por WhatsApp 💬
+                    </a>
+                </div>
+
+                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Passo a passo nosso jantar vai ganhando vida. Te amo! ❤️</p>
+            </div>
+        </div>
+
         <!-- OUTROS DIAS -->
-        <div id="content-07" class="day-content"><h1 class="save-the-date-title">DIA 07/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Terça-feira! Próxima escolha detalhada do cardápio...</p></div></div>
         <div id="content-08" class="day-content"><h1 class="save-the-date-title">DIA 08/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>Quarta-feira! Escolha detalhada da sobremesa...</p></div></div>
         <div id="content-09" class="day-content"><h1 class="save-the-date-title">DIA 09/07</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p>A grande véspera! Cardápio ponto a ponto oficial montado na tela.</p></div></div>
         <div id="content-10" class="day-content"><h1 class="save-the-date-title">10 DE JULHO DE 2026 ❤️</h1><div class="image-container"><img src="capa0207.png" alt="Save the Date"></div><div class="message-box"><p style="text-align: center; font-size: 1.2rem; font-weight: bold;">O Nosso Momento Chegou.</p></div></div>
@@ -634,6 +670,7 @@
         let selectedEntrance = '';
         let selectedSalonDay = '';
         let salonUnlocked = false;
+        let selectedDrink = '';
 
         let unlockedDays = JSON.parse(localStorage.getItem('saveTheDateUnlocked')) || ['02']; 
 
@@ -747,6 +784,27 @@
             updateMondayWppLink();
         }
 
+        // Lógica e Montagem do WhatsApp da TERÇA-FEIRA
+        function selectDrink(drink, button) {
+            selectedDrink = drink;
+            const buttons = button.parentElement.querySelectorAll('.vote-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            button.classList.add('selected');
+            updateDrinkWppLink();
+        }
+
+        function updateDrinkWppLink() {
+            if (!selectedDrink) return;
+            const customNotes = document.getElementById('drink-custom-notes').value.trim();
+            let msg = "Escolha de Terça-feira feita! 🍾✨\n\n";
+            msg += "🍾 *Bebida/Vinho Selecionado:* " + selectedDrink + "\n";
+            if(customNotes) msg += "📝 *Desejo extra de bebida:* _\"" + customNotes + "\"_\n";
+            msg += "\nMais um item definido para o dia 10! Te amo muito! ❤️";
+            
+            document.getElementById('wpp-tuesday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
+            document.getElementById('wpp-tuesday-block').style.display = 'block';
+        }
+
         function checkDay(day, password) {
             if (unlockedDays.includes(day)) {
                 switchDay(day);
@@ -761,6 +819,8 @@
                 instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles (juntos ou separados):";
             } else if (day === '06') {
                 instructionLabel.innerHTML = "🎤 <strong>Chave de Acesso:</strong> Sabe aquele primeiro show que eu te levei, lembra qual é?";
+            } else if (day === '07') {
+                instructionLabel.innerHTML = "🎬 <strong>Chave de Acesso:</strong> Para abrir a terça-feira, qual é o seu filme favorito da vida inteira? (Dica: O bruxo mais famoso do cinema!)";
             } else {
                 instructionLabel.innerText = "Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:";
             }
@@ -769,25 +829,25 @@
         }
 
         function validatePassword() {
-            const typedPassword = document.getElementById('input-pass').value.trim().toLowerCase();
+            const typedPassword = document.getElementById('input-pass').value.trim().toLowerCase().replace(/\s+/g, '');
             let isValid = false;
 
             if (currentTargetDay === '03') {
-                if (typedPassword === 'fredemorena' || 
-                    typedPassword === 'fred e morena' || 
-                    typedPassword === 'fredmorena' || 
-                    typedPassword === 'fred morena') {
+                const rawPassword = document.getElementById('input-pass').value.trim().toLowerCase();
+                if (rawPassword === 'fredemorena' || rawPassword === 'fred e morena' || rawPassword === 'fredmorena' || rawPassword === 'fred morena') {
                     isValid = true;
                 }
             } else if (currentTargetDay === '06') {
-                if (typedPassword === 'sampacrew' || 
-                    typedPassword === 'sampa crew' || 
-                    typedPassword === 'sampacrewgrupo' || 
-                    typedPassword === 'grupo sampacrew') {
+                if (typedPassword === 'sampacrew' || typedPassword === 'sampacrewgrupo' || typedPassword === 'gruposampacrew') {
+                    isValid = true;
+                }
+            } else if (currentTargetDay === '07') {
+                // Validação estrita e flexível para Harry Potter
+                if (typedPassword === 'harrypotter' || typedPassword === 'hp') {
                     isValid = true;
                 }
             } else {
-                if (typedPassword === currentTargetPassword) {
+                if (typedPassword === currentTargetPassword.toLowerCase()) {
                     isValid = true;
                 }
             }
@@ -808,6 +868,8 @@
                     alert('Chave Incorreta! Olhe com carinho para o seu coração... quem são os dois anjinhos de quatro patas? 🤫🐾');
                 } else if (currentTargetDay === '06') {
                     alert('Errou! 🎤 Uma dica: solta aquela melodia marcante que a gente adora cantar junto...');
+                } else if (currentTargetDay === '07') {
+                    alert('Acesso negado, trouxa! (Brincadeira rs). Tente digitar o nome completo do bruxo sem pontuação! 🧙‍♂️✨');
                 } else {
                     alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
                 }
