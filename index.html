@@ -428,12 +428,12 @@
                 <div class="day-num">07</div>
                 <div class="status-icon" id="status-07">🔓</div>
             </div>
-            <div class="day-box locked" id="btn-08" onclick="checkDay('08', 'PORTUGAL_TRIGGER')">
+            <div class="day-box unlocked" id="btn-08" onclick="switchDay('08')">
                 <div class="day-name">Qua</div>
                 <div class="day-num">08</div>
-                <div class="status-icon" id="status-08">🔒</div>
+                <div class="status-icon" id="status-08">🔓</div>
             </div>
-            <div class="day-box locked" id="btn-09" onclick="checkDay('09', 'amor09')">
+            <div class="day-box locked" id="btn-09" onclick="checkDay('09', 'COPA_DO_MUNDO_TRIGGER')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">09</div>
                 <div class="status-icon" id="status-09">🔒</div>
@@ -449,7 +449,7 @@
     <!-- Conteúdo Dinâmico -->
     <div class="main-content">
         
-        <!-- ================= DIAS ANTERIORES (RESUMIDOS) ================= -->
+        <!-- ================= ABAS ANTERIORES RESUMIDAS ================= -->
         <div id="content-02" class="day-content">
             <h1 class="save-the-date-title">SAVE THE DATE</h1>
             <div class="message-box"><p>Tudo no tempo certo... Nosso momento está marcado para o dia 10.07.2026! ❤️</p></div>
@@ -466,75 +466,52 @@
             <h1 class="save-the-date-title">A HARMONIZAÇÃO PERFEITA</h1>
             <div class="message-box"><p>A bebida ideal para acompanhar a nossa noite especial já foi selecionada! 🥂</p></div>
         </div>
-
-        <!-- ================= DIA 08/07 (QUARTA-FEIRA - ATIVO) ================= -->
-        <div id="content-08" class="day-content active">
+        <div id="content-08" class="day-content">
             <h1 class="save-the-date-title">O PRATO PRINCIPAL</h1>
-            <div class="subtitle">Chegou a hora do show: monte o seu risoto!</div>
+            <div class="message-box"><p>O seu Risoto Premium customizado já está no caderno de receitas do Chef! 🥘✨</p></div>
+        </div>
+
+        <!-- ================= DIA 09/07 (QUINTA-FEIRA - ATIVO POR PADRÃO) ================= -->
+        <div id="content-09" class="day-content active">
+            <h1 class="save-the-date-title">O GRAND FINALE</h1>
+            <div class="subtitle">A grande véspera: escolha o fechamento perfeito!</div>
             <div class="image-container">
                 <img src="capa0207.png" alt="Save the Date">
             </div>
             <div class="message-box">
-                <p>Chegamos na metade da semana, meu amor! Você já definiu a entrada e a bebida ideal. Hoje, entramos de vez na <span class="highlight">Estrela da Noite</span>.</p>
-                <p>Como você mesma disse: <i>"a ocasião pede um risotinho do jeito que só você sabe fazer"</i>. Então, hoje o seu papel é ser a chef criativa. Montei um menu completo com os ingredientes mais tradicionais para você escolher **tudo o que você quer** na composição final desse prato:</p>
+                <p>É amanhã, meu amor! A ansiedade já está batendo forte e a cozinha por aqui já está sendo preparada. Você já definiu a entrada, a bebida perfeita e desenhou o sabor exato do risoto.</p>
+                <p>Como eu vou passar um bom tempo pilotando o fogão para deixar o risoto impecável e no ponto correto, hoje a nossa missão é escolher uma **sobremesa mais leve e prática**, daquelas que não demandam forno na hora de servir e fecham a noite com chave de ouro. 🍨✨</p>
+                <p>Escolha o Grand Finale do nosso jantar oficial abaixo:</p>
                 
-                <!-- MONTE SEU RISOTO -->
-                <div class="voting-section" style="text-align: left;">
+                <!-- SELEÇÃO DA SOBREMESA -->
+                <div class="voting-section">
+                    <div class="voting-title">🍨 Qual será a Sobremesa de amanhã?</div>
+                    <div class="voting-options">
+                        <button class="vote-btn" onclick="selectDessert('Mousse de Chocolate Tradicional e Cremoso', this)">Mousse de Chocolate 🍫🍨</button>
+                        <button class="vote-btn" onclick="selectDessert('Pudim de Leite Condensado Clássico e Geladinho', this)">Pudim de Leite Condensado 🍮❤️</button>
+                        <button class="vote-btn" onclick="selectDessert('Bolo de Banana Caseiro do Chef', this)">Bolo de Banana 🍌🍰</button>
+                        <button class="vote-btn" onclick="selectDessert('Mousse de Limão ou Maracujá Refrescante', this)">Mousse de Fruta Refrescante (Limão/Maracujá) 🍋🍋</button>
+                    </div>
                     
-                    <!-- 1. PROTEÍNA PRINCIPAL -->
-                    <div style="margin-bottom: 20px;">
-                        <p style="font-weight: 600; color: #2b2420; margin-bottom: 8px;">🥩 1. Escolha a Proteína Principal:</p>
-                        <div class="voting-options" id="options-protein" style="justify-content: flex-start;">
-                            <button class="vote-btn" onclick="toggleSelection(this, 'protein')">Filé Mignon em Tiras 🥩</button>
-                            <button class="vote-btn" onclick="toggleSelection(this, 'protein')">Frango Suculento em Cubos 🍗</button>
-                            <button class="vote-btn" onclick="toggleSelection(this, 'protein')">Apenas Queijos Selecionados 🧀</button>
-                        </div>
-                    </div>
-
-                    <!-- 2. O TOQUE DE ACIDEZ / BASE -->
-                    <div style="margin-bottom: 20px;">
-                        <p style="font-weight: 600; color: #2b2420; margin-bottom: 8px;">🍋 2. Escolha o Toque de Sabor / Base:</p>
-                        <div class="voting-options" id="options-base" style="justify-content: flex-start;">
-                            <button class="vote-btn" onclick="toggleSelection(this, 'base')">Limão-Siciliano 🍋</button>
-                            <button class="vote-btn" onclick="toggleSelection(this, 'base')">Redução de Vinho Tinto 🍷</button>
-                            <button class="vote-btn" onclick="toggleSelection(this, 'base')">Molho Branco Cremoso Clássico 🥛</button>
-                            <button class="vote-btn" onclick="toggleSelection(this, 'base')">Tomate Seco Tradicional 🍅</button>
-                        </div>
-                    </div>
-
-                    <!-- 3. COMPLEMENTOS E MARCAÇÕES -->
-                    <div style="margin-bottom: 20px;">
-                        <p style="font-weight: 600; color: #2b2420; margin-bottom: 8px;">🥓 3. Adicione os Complementos Tradicionais (Escolha quantos quiser!):</p>
-                        <div class="voting-options" id="options-extras" style="justify-content: flex-start;">
-                            <button class="vote-btn" onclick="toggleSelectionMultiple(this)">Bacon em Cubos Crocante 🥓</button>
-                            <button class="vote-btn" onclick="toggleSelectionMultiple(this)">Alho-Poró Refogado 🌱</button>
-                            <button class="vote-btn" onclick="toggleSelectionMultiple(this)">Bastante Queijo Parmesão Ralado 🧀</button>
-                            <button class="vote-btn" onclick="toggleSelectionMultiple(this)">Champignon / Cogumelos 🍄</button>
-                            <button class="vote-btn" onclick="toggleSelectionMultiple(this)">Tomate Picadinho 🍅</button>
-                        </div>
-                    </div>
-
-                    <!-- OBSERVAÇÕES DO CHEF -->
-                    <div style="margin-top: 20px;">
-                        <label for="risotto-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Mais alguma ideia, ponto da carne ou segredinho que você quer que eu adicione? Escreva aqui: 🖋️</label>
-                        <textarea id="risotto-custom-notes" class="custom-notes-textarea" placeholder="Ex: Capricha na cremosidade, quero o filé bem macio, sem pimenta..." oninput="updateRisottoWppLink()"></textarea>
+                    <div style="margin-top: 20px; text-align: left;">
+                        <label for="dessert-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Deseja algum detalhe extra (ex: raspas de chocolate, calda)? Escreva aqui: 👀</label>
+                        <textarea id="dessert-custom-notes" class="custom-notes-textarea" placeholder="Ex: Adoro raspas de chocolate por cima, prefiro o pudim bem lisinho, pouca calda..." oninput="updateDessertWppLink()"></textarea>
                     </div>
                 </div>
 
-                <!-- Botão do WhatsApp para Quarta -->
-                <div class="wpp-container" id="wpp-wednesday-block" style="margin-top: 25px;">
-                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para fechar o seu pedido oficial do prato principal!</p>
-                    <a href="#" id="wpp-wednesday-link" target="_blank" class="wpp-btn">
-                        Enviar Meu Risoto Customizado por WhatsApp 💬
+                <!-- Botão do WhatsApp para Quinta -->
+                <div class="wpp-container" id="wpp-thursday-block" style="margin-top: 25px;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para enviar sua escolha final para o Chef!</p>
+                    <a href="#" id="wpp-thursday-link" target="_blank" class="wpp-btn">
+                        Enviar Escolha da Sobremesa por WhatsApp 💬
                     </a>
                 </div>
 
-                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">Já estou separando a panela certa para cozinhar para você. Te amo! ❤️</p>
+                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">O cardápio completo de amanhã está oficialmente fechado por você. Eu te amo infinitamente! ❤️</p>
             </div>
         </div>
 
         <!-- OUTROS DIAS -->
-        <div id="content-09" class="day-content"><h1 class="save-the-date-title">DIA 09/07</h1><div class="message-box"><p>A grande véspera! Cardápio oficial montado na tela.</p></div></div>
         <div id="content-10" class="day-content"><h1 class="save-the-date-title">10 DE JULHO DE 2026 ❤️</h1><div class="message-box"><p style="text-align: center; font-size: 1.2rem; font-weight: bold;">O Nosso Momento Chegou.</p></div></div>
 
     </div>
@@ -554,10 +531,7 @@
     <script>
         let currentTargetDay = '';
         let currentTargetPassword = '';
-        
-        let selectedProtein = '';
-        let selectedBase = '';
-        let selectedExtras = [];
+        let selectedDessert = '';
 
         let unlockedDays = JSON.parse(localStorage.getItem('saveTheDateUnlocked')) || ['02']; 
 
@@ -573,50 +547,23 @@
             });
         };
 
-        function toggleSelection(button, group) {
+        function selectDessert(dessert, button) {
+            selectedDessert = dessert;
             const buttons = button.parentElement.querySelectorAll('.vote-btn');
             buttons.forEach(b => b.classList.remove('selected'));
             button.classList.add('selected');
-            
-            if (group === 'protein') selectedProtein = button.innerText;
-            if (group === 'base') selectedBase = button.innerText;
-            
-            updateRisottoWppLink();
+            updateDessertWppLink();
         }
 
-        function toggleSelectionMultiple(button) {
-            button.classList.toggle('selected');
-            const value = button.innerText;
+        function updateDessertWppLink() {
+            if (!selectedDessert) return;
+            const customNotes = document.getElementById('dessert-custom-notes').value.trim();
+            let msg = "Véspera concluída! Escolhi o Grand Finale do nosso jantar: *" + selectedDessert + "*! 🍨❤️\n\n";
+            if (customNotes) msg += "📝 *Toque extra para o doce:* _\"" + customNotes + "\"_\n";
+            msg += "\nCardápio totalmente fechado! Amanhã o show é seu, meu Chef! Te amo! 🥰🍽️";
             
-            if (button.classList.contains('selected')) {
-                if (!selectedExtras.includes(value)) selectedExtras.push(value);
-            } else {
-                selectedExtras = selectedExtras.filter(item => item !== value);
-            }
-            
-            updateRisottoWppLink();
-        }
-
-        function updateRisottoWppLink() {
-            if (!selectedProtein || !selectedBase) return;
-            
-            const customNotes = document.getElementById('risotto-custom-notes').value.trim();
-            let msg = "Montei meu Risoto Premium oficial para o dia 10! 🥘✨\n\n";
-            msg += "🥩 *Proteína:* " + selectedProtein + "\n";
-            msg += "🍋 *Base de Sabor:* " + selectedBase + "\n";
-            
-            if (selectedExtras.length > 0) {
-                msg += "🥓 *Complementos:* " + selectedExtras.join(', ') + "\n";
-            }
-            
-            if (customNotes) {
-                msg += "📝 *Desejos do Chef:* _\"" + customNotes + "\"_\n";
-            }
-            
-            msg += "\nCapricha no tempero que eu já estou salivando! Te amo muito! ❤️";
-            
-            document.getElementById('wpp-wednesday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
-            document.getElementById('wpp-wednesday-block').style.display = 'block';
+            document.getElementById('wpp-thursday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
+            document.getElementById('wpp-thursday-block').style.display = 'block';
         }
 
         function checkDay(day, password) {
@@ -630,13 +577,16 @@
             
             const instructionLabel = document.getElementById('modal-instruction-text');
             if (day === '03') {
-                instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles (juntos ou separados):";
+                instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles:";
             } else if (day === '06') {
                 instructionLabel.innerHTML = "🎤 <strong>Chave de Acesso:</strong> Sabe aquele primeiro show que eu te levei, lembra qual é?";
             } else if (day === '07') {
                 instructionLabel.innerHTML = "🎬 <strong>Chave de Acesso:</strong> Para abrir a terça-feira, qual é o seu filme favorito da vida inteira?";
             } else if (day === '08') {
                 instructionLabel.innerHTML = "✈️ <strong>Chave de Acesso:</strong> Nossa viagem inesquecível até aqui... Qual o nome do país?";
+            } else if (day === '09') {
+                // Nova dica configurada para o grande evento esportivo atual
+                instructionLabel.innerHTML = "⚽ <strong>Chave de Acesso:</strong> Grande evento esportivo atual que me deixa vidrado?";
             } else {
                 instructionLabel.innerText = "Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:";
             }
@@ -665,6 +615,11 @@
                 if (typedPassword === 'portugal') {
                     isValid = true;
                 }
+            } else if (currentTargetDay === '09') {
+                // Validação para a nova senha: copadomundo
+                if (typedPassword === 'copadomundo' || typedPassword === 'copa') {
+                    isValid = true;
+                }
             } else {
                 if (typedPassword === currentTargetPassword.toLowerCase()) {
                     isValid = true;
@@ -683,14 +638,8 @@
                 closeModal();
                 switchDay(currentTargetDay);
             } else {
-                if (currentTargetDay === '03') {
-                    alert('Chave Incorreta! Olhe com carinho para o seu coração... quem são os dois anjinhos de quatro patas? 🤫🐾');
-                } else if (currentTargetDay === '06') {
-                    alert('Errou! 🎤 Uma dica: solta aquela melodia marcante que a gente adora cantar junto...');
-                } else if (currentTargetDay === '07') {
-                    alert('Acesso negado, trouxa! (Brincadeira rs). Tente digitar o nome completo do bruxo sem pontuação! 🧙‍♂️✨');
-                } else if (currentTargetDay === '08') {
-                    alert('Chave incorreta! ✈️ Pense no nosso passaporte, carimbos e nas melhores memórias fora daqui...');
+                if (currentTargetDay === '09') {
+                    alert('Chave Incorreta! ⚽ Pense na maior competição de seleções do planeta que me prende na TV de 4 em 4 anos...');
                 } else {
                     alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
                 }
