@@ -202,16 +202,6 @@
             color: #2b2420;
         }
 
-        .logistica-note {
-            font-size: 0.85rem;
-            color: #8c7a6b;
-            font-style: italic;
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px dashed #ebdcd0;
-            padding-top: 15px;
-        }
-
         /* Área de Votação Interativa */
         .voting-section {
             margin-top: 25px;
@@ -433,12 +423,12 @@
                 <div class="day-num">08</div>
                 <div class="status-icon" id="status-08">🔓</div>
             </div>
-            <div class="day-box locked" id="btn-09" onclick="checkDay('09', 'COPA_DO_MUNDO_TRIGGER')">
+            <div class="day-box unlocked" id="btn-09" onclick="switchDay('09')">
                 <div class="day-name">Qui</div>
                 <div class="day-num">09</div>
-                <div class="status-icon" id="status-09">🔒</div>
+                <div class="status-icon" id="status-09">🔓</div>
             </div>
-            <div class="day-box locked" id="btn-10" onclick="checkDay('10', 'paraSForever')">
+            <div class="day-box locked" id="btn-10" onclick="checkDay('10', 'prasempre')">
                 <div class="day-name">Sex</div>
                 <div class="day-num">10</div>
                 <div class="status-icon" id="status-10">❤️</div>
@@ -449,81 +439,76 @@
     <!-- Conteúdo Dinâmico -->
     <div class="main-content">
         
-        <!-- ================= ABAS ANTERIORES RESUMIDAS ================= -->
-        <div id="content-02" class="day-content">
-            <h1 class="save-the-date-title">SAVE THE DATE</h1>
-            <div class="message-box"><p>Tudo no tempo certo... Nosso momento está marcado para o dia 10.07.2026! ❤️</p></div>
-        </div>
-        <div id="content-03" class="day-content">
-            <h1 class="save-the-date-title">O NOSSO ALICERCE</h1>
-            <div class="message-box"><p>Uma história sustentada por afeto, conexões reais e saudades eternas em nossos corações. ✨🐾</p></div>
-        </div>
-        <div id="content-06" class="day-content">
-            <h1 class="save-the-date-title">MONTAGEM DO CARDÁPIO</h1>
-            <div class="message-box"><p>Entrada oficial definida com sucesso pela dona do cardápio! 🥗</p></div>
-        </div>
-        <div id="content-07" class="day-content">
-            <h1 class="save-the-date-title">A HARMONIZAÇÃO PERFEITA</h1>
-            <div class="message-box"><p>A bebida ideal para acompanhar a nossa noite especial já foi selecionada! 🥂</p></div>
-        </div>
-        <div id="content-08" class="day-content">
-            <h1 class="save-the-date-title">O PRATO PRINCIPAL</h1>
-            <div class="message-box"><p>O seu Risoto Premium customizado já está no caderno de receitas do Chef! 🥘✨</p></div>
-        </div>
+        <!-- ABAS RESUMIDAS -->
+        <div id="content-02" class="day-content"><h1 class="save-the-date-title">SAVE THE DATE</h1><div class="message-box"><p>Tudo no tempo certo... Nosso momento chegou! ❤️</p></div></div>
+        <div id="content-03" class="day-content"><h1 class="save-the-date-title">O NOSSO ALICERCE</h1><div class="message-box"><p>Uma história de amor, cumplicidade e saudades eternas em nossos corações. ✨🐾</p></div></div>
+        <div id="content-06" class="day-content"><h1 class="save-the-date-title">MONTAGEM DO CARDÁPIO</h1><div class="message-box"><p>Entrada selecionada com sucesso! 🥗</p></div></div>
+        <div id="content-07" class="day-content"><h1 class="save-the-date-title">A HARMONIZAÇÃO PERFEITA</h1><div class="message-box"><p>A bebida ideal já está separada na adega! 🥂</p></div></div>
+        <div id="content-08" class="day-content"><h1 class="save-the-date-title">O PRATO PRINCIPAL</h1><div class="message-box"><p>O Risoto Premium está pronto para ganhar vida no fogão! 🥘✨</p></div></div>
+        <div id="content-09" class="day-content"><h1 class="save-the-date-title">O GRAND FINALE</h1><div class="message-box"><p>A sobremesa perfeita já foi carimbada e escolhida! 🍨</p></div></div>
 
-        <!-- ================= DIA 09/07 (QUINTA-FEIRA - ATIVO POR PADRÃO) ================= -->
-        <div id="content-09" class="day-content active">
-            <h1 class="save-the-date-title">O GRAND FINALE</h1>
-            <div class="subtitle">A grande véspera: escolha o fechamento perfeito!</div>
+        <!-- ================= DIA 10/07 (HOJE - O GRANDE DIA!) ================= -->
+        <div id="content-10" class="day-content active">
+            <h1 class="save-the-date-title">CHEGOU O NOSSO MOMENTO</h1>
+            <div class="subtitle">10 de Julho de 2026 • O Nosso Jantar Especial</div>
             <div class="image-container">
-                <img src="capa0207.png" alt="Save the Date">
+                <img src="capa0207.png" alt="O Grande Dia">
             </div>
             <div class="message-box">
-                <p>É amanhã, meu amor! A ansiedade já está batendo forte e a cozinha por aqui já está sendo preparada. Você já definiu a entrada, a bebida perfeita e desenhou o sabor exato do risoto.</p>
-                <p>Como eu vou passar um bom tempo pilotando o fogão para deixar o risoto impecável e no ponto correto, hoje a nossa missão é escolher uma **sobremesa mais leve e prática**, daquelas que não demandam forno na hora de servir e fecham a noite com chave de ouro. 🍨✨</p>
-                <p>Escolha o Grand Finale do nosso jantar oficial abaixo:</p>
+                <p>O coração está batendo mais forte, a mesa está posta mentalmente e o menu completo foi <span class="highlight">inteiramente desenhado por você</span> ao longo desta semana inesquecível.</p>
+                <p>Não há mais contagem regressiva, não há mais mistérios... <span class="highlight">o nosso dia é hoje</span>. Tudo o que planejei foi para ver esse seu sorriso que ilumina a minha vida inteira.</p>
+                <p>Para deixarmos o ambiente perfeito hoje à noite, a sua penúltima missão é escolher qual será a **vibe e o estilo musical de fundo** que ditará o ritmo do nosso jantar:</p>
                 
-                <!-- SELEÇÃO DA SOBREMESA -->
-                <div class="voting-section">
-                    <div class="voting-title">🍨 Qual será a Sobremesa de amanhã?</div>
-                    <div class="voting-options">
-                        <button class="vote-btn" onclick="selectDessert('Mousse de Chocolate Tradicional e Cremoso', this)">Mousse de Chocolate 🍫🍨</button>
-                        <button class="vote-btn" onclick="selectDessert('Pudim de Leite Condensado Clássico e Geladinho', this)">Pudim de Leite Condensado 🍮❤️</button>
-                        <button class="vote-btn" onclick="selectDessert('Bolo de Banana Caseiro do Chef', this)">Bolo de Banana 🍌🍰</button>
-                        <button class="vote-btn" onclick="selectDessert('Mousse de Limão ou Maracujá Refrescante', this)">Mousse de Fruta Refrescante (Limão/Maracujá) 🍋🍋</button>
-                    </div>
-                    
-                    <div style="margin-top: 20px; text-align: left;">
-                        <label for="dessert-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Deseja algum detalhe extra (ex: raspas de chocolate, calda)? Escreva aqui: 👀</label>
-                        <textarea id="dessert-custom-notes" class="custom-notes-textarea" placeholder="Ex: Adoro raspas de chocolate por cima, prefiro o pudim bem lisinho, pouca calda..." oninput="updateDessertWppLink()"></textarea>
+                <!-- SELEÇÃO DE AMBIENTE MUSICAL -->
+                <div class="voting-section" style="text-align: left; margin-bottom: 25px;">
+                    <p style="font-weight: 600; color: #2b2420; margin-bottom: 10px;">🎵 Qual será a Trilha Sonora do Jantar?</p>
+                    <div class="voting-options" style="justify-content: flex-start;">
+                        <button class="vote-btn" onclick="selectMusic('Estilo Clássico / MPB / Voz e Violão 🎧', this)">MPB / Voz e Violão 🎸</button>
+                        <button class="vote-btn" onclick="selectMusic('Estilo Jazz / Blues Instrumental Premium 🎷', this)">Jazz / Blues Instrumental 🎷</button>
+                        <button class="vote-btn" onclick="selectMusic('Estilo Pagodinho Acústico Romântico 🥁', this)">Pagodinho Romântico 🥁</button>
                     </div>
                 </div>
 
-                <!-- Botão do WhatsApp para Quinta -->
-                <div class="wpp-container" id="wpp-thursday-block" style="margin-top: 25px;">
-                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para enviar sua escolha final para o Chef!</p>
-                    <a href="#" id="wpp-thursday-link" target="_blank" class="wpp-btn">
-                        Enviar Escolha da Sobremesa por WhatsApp 💬
+                <!-- SELEÇÃO DO VALE BÔNUS -->
+                <div class="voting-section" style="text-align: left; border-color: #25d366; background: #f7fdf9;">
+                    <p style="font-weight: bold; color: #128c7e; margin-bottom: 5px; font-size: 1.1rem;">🎁 MISSÃO BÔNUS: SEU VALE PRESENTE! 🎁</p>
+                    <p style="font-size: 0.95rem; color: #2b2420; margin-bottom: 15px;">Para coroar essa semana perfeita e estender o nosso clima romântico pelo final de semana, você tem direito a escolher **um Vale Bônus exclusivo** na lista abaixo. Qual você quer resgatar?</p>
+                    
+                    <div class="voting-options" style="justify-content: flex-start;">
+                        <button class="vote-btn" onclick="selectBonus('Massagem relaxante com creme especial feita por mim 💆‍♀️✨', this)">Massagem com Creme 💆‍♀️✨</button>
+                        <button class="vote-btn" onclick="selectBonus('Café da manhã completo servido na cama neste sábado ☕🥐', this)">Café na Cama no Sábado ☕🥐</button>
+                        <button class="vote-btn" onclick="selectBonus('Um Cineminha romântico completo com pipoca a definir 🎬🍿', this)">Cineminha a Definir 🎬🍿</button>
+                    </div>
+                </div>
+
+                <!-- OBSERVAÇÕES FINAIS -->
+                <div style="margin-top: 20px;">
+                    <label for="final-custom-notes" style="font-size: 0.9rem; font-weight: 600; color: #2b2420;">Deixe um recado final pro seu Chef ou declare o seu amor para hoje à noite: 🖋️❤️</label>
+                    <textarea id="final-custom-notes" class="custom-notes-textarea" placeholder="Escreva aqui... 👀" oninput="updateFinalWppLink()"></textarea>
+                </div>
+
+                <!-- Botão do WhatsApp para Sexta -->
+                <div class="wpp-container" id="wpp-friday-block" style="margin-top: 25px;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #4a3e36;">Clique abaixo para validar a trilha sonora e resgatar o seu Vale!</p>
+                    <a href="#" id="wpp-friday-link" target="_blank" class="wpp-btn">
+                        Ativar Jantar &amp; Resgatar Meu Vale 💬❤️
                     </a>
                 </div>
 
-                <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #2b2420;">O cardápio completo de amanhã está oficialmente fechado por você. Eu te amo infinitamente! ❤️</p>
+                <p style="text-align: center; margin-top: 30px; font-size: 1.15rem; font-weight: bold; color: #2b2420; font-family: Georgia, serif;">Se prepare para a melhor noite da sua vida. Eu te amo daqui até o infinito! Nos vemos mais tarde... 🥰✨💍</p>
             </div>
         </div>
-
-        <!-- OUTROS DIAS -->
-        <div id="content-10" class="day-content"><h1 class="save-the-date-title">10 DE JULHO DE 2026 ❤️</h1><div class="message-box"><p style="text-align: center; font-size: 1.2rem; font-weight: bold;">O Nosso Momento Chegou.</p></div></div>
 
     </div>
 
     <!-- Pop-up para inserção da senha -->
     <div class="modal-overlay" id="password-modal">
         <div class="modal-card">
-            <div class="modal-icon">🔒</div>
-            <div class="modal-title">Acesso Restrito</div>
-            <div class="modal-text" id="modal-instruction-text">Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:</div>
-            <input type="password" id="input-pass" class="password-input" placeholder="Digite a senha secreta...">
-            <button class="modal-btn" onclick="validatePassword()">Desbloquear Dia ✨</button>
+            <div class="modal-icon">❤️</div>
+            <div class="modal-title">O Grande Dia Chegou</div>
+            <div class="modal-text" id="modal-instruction-text">Para abrir o nosso capítulo final e liberar o jantar, digite a palavra que define o nosso futuro:</div>
+            <input type="password" id="input-pass" class="password-input" placeholder="Digite a palavra secreta...">
+            <button class="modal-btn" onclick="validatePassword()">Liberar o Grande Dia ✨</button>
             <button class="modal-btn" style="background: #ebdcd0; color: #6e5d4f; margin-top: 8px;" onclick="closeModal()">Voltar</button>
         </div>
     </div>
@@ -531,7 +516,9 @@
     <script>
         let currentTargetDay = '';
         let currentTargetPassword = '';
-        let selectedDessert = '';
+        
+        let selectedMusic = '';
+        let selectedBonus = '';
 
         let unlockedDays = JSON.parse(localStorage.getItem('saveTheDateUnlocked')) || ['02']; 
 
@@ -542,28 +529,46 @@
                     btn.classList.remove('locked');
                     btn.classList.add('unlocked');
                     const icon = document.getElementById('status-' + day);
-                    if (icon) icon.innerText = day === '10' ? '❤️' : '🔓';
+                    if (icon) icon.innerText = '🔓';
                 }
             });
+            // Mantém o ícone do dia 10 sempre como coração
+            const status10 = document.getElementById('status-10');
+            if(status10) status10.innerText = '❤️';
         };
 
-        function selectDessert(dessert, button) {
-            selectedDessert = dessert;
+        function selectMusic(music, button) {
+            selectedMusic = music;
             const buttons = button.parentElement.querySelectorAll('.vote-btn');
             buttons.forEach(b => b.classList.remove('selected'));
             button.classList.add('selected');
-            updateDessertWppLink();
+            updateFinalWppLink();
         }
 
-        function updateDessertWppLink() {
-            if (!selectedDessert) return;
-            const customNotes = document.getElementById('dessert-custom-notes').value.trim();
-            let msg = "Véspera concluída! Escolhi o Grand Finale do nosso jantar: *" + selectedDessert + "*! 🍨❤️\n\n";
-            if (customNotes) msg += "📝 *Toque extra para o doce:* _\"" + customNotes + "\"_\n";
-            msg += "\nCardápio totalmente fechado! Amanhã o show é seu, meu Chef! Te amo! 🥰🍽️";
+        function selectBonus(bonus, button) {
+            selectedBonus = bonus;
+            const buttons = button.parentElement.querySelectorAll('.vote-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            button.classList.add('selected');
+            updateFinalWppLink();
+        }
+
+        function updateFinalWppLink() {
+            if (!selectedMusic || !selectedBonus) return;
+            const customNotes = document.getElementById('final-custom-notes').value.trim();
             
-            document.getElementById('wpp-thursday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
-            document.getElementById('wpp-thursday-block').style.display = 'block';
+            let msg = "Meu amor, tudo pronto por aqui! O grande momento chegou! 🗓️✨❤️\n\n";
+            msg += "🎵 *Trilha Sonora Escolhida:* " + selectedMusic + "\n";
+            msg += "🎁 *Vale Bônus Resgatado:* " + selectedBonus + "\n";
+            
+            if (customNotes) {
+                msg += "\n📝 *Recadinho final:* _\"" + customNotes + "\"_\n";
+            }
+            
+            msg += "\nEstou super ansiosa e de banho tomado! Te amo mais que tudo no mundo! Nos vemos à noite! 🥰🍽️🥂";
+            
+            document.getElementById('wpp-friday-link').href = "https://wa.me/?text=" + encodeURIComponent(msg);
+            document.getElementById('wpp-friday-block').style.display = 'block';
         }
 
         function checkDay(day, password) {
@@ -576,17 +581,8 @@
             document.getElementById('input-pass').value = '';
             
             const instructionLabel = document.getElementById('modal-instruction-text');
-            if (day === '03') {
-                instructionLabel.innerHTML = "💡 <strong>Chave de Acesso:</strong> Pense nos seus dois grandes amores que já se foram, e digite o nome deles:";
-            } else if (day === '06') {
-                instructionLabel.innerHTML = "🎤 <strong>Chave de Acesso:</strong> Sabe aquele primeiro show que eu te levei, lembra qual é?";
-            } else if (day === '07') {
-                instructionLabel.innerHTML = "🎬 <strong>Chave de Acesso:</strong> Para abrir a terça-feira, qual é o seu filme favorito da vida inteira?";
-            } else if (day === '08') {
-                instructionLabel.innerHTML = "✈️ <strong>Chave de Acesso:</strong> Nossa viagem inesquecível até aqui... Qual o nome do país?";
-            } else if (day === '09') {
-                // Nova dica configurada para o grande evento esportivo atual
-                instructionLabel.innerHTML = "⚽ <strong>Chave de Acesso:</strong> Grande evento esportivo atual que me deixa vidrado?";
+            if (day === '10') {
+                instructionLabel.innerHTML = "✨ <strong>Chave de Acesso Final:</strong> Digite aquela palavra que define o nosso amor e o tempo que passaremos juntos:";
             } else {
                 instructionLabel.innerText = "Calma, ansiosa! Insira a Chave de Acesso para liberar este dia:";
             }
@@ -598,26 +594,8 @@
             const typedPassword = document.getElementById('input-pass').value.trim().toLowerCase().replace(/\s+/g, '');
             let isValid = false;
 
-            if (currentTargetDay === '03') {
-                const rawPassword = document.getElementById('input-pass').value.trim().toLowerCase();
-                if (rawPassword === 'fredemorena' || rawPassword === 'fred e morena' || rawPassword === 'fredmorena' || rawPassword === 'fred morena') {
-                    isValid = true;
-                }
-            } else if (currentTargetDay === '06') {
-                if (typedPassword === 'sampacrew' || typedPassword === 'sampacrewgrupo' || typedPassword === 'gruposampacrew') {
-                    isValid = true;
-                }
-            } else if (currentTargetDay === '07') {
-                if (typedPassword === 'harrypotter' || typedPassword === 'hp') {
-                    isValid = true;
-                }
-            } else if (currentTargetDay === '08') {
-                if (typedPassword === 'portugal') {
-                    isValid = true;
-                }
-            } else if (currentTargetDay === '09') {
-                // Validação para a nova senha: copadomundo
-                if (typedPassword === 'copadomundo' || typedPassword === 'copa') {
+            if (currentTargetDay === '10') {
+                if (typedPassword === 'prasempre' || typedPassword === 'para-sempre' || typedPassword === 'parasempre') {
                     isValid = true;
                 }
             } else {
@@ -634,15 +612,10 @@
                 const btn = document.getElementById('btn-' + currentTargetDay);
                 btn.classList.remove('locked');
                 btn.classList.add('unlocked');
-                document.getElementById('status-' + currentTargetDay).innerText = currentTargetDay === '10' ? '❤️' : '🔓';
                 closeModal();
                 switchDay(currentTargetDay);
             } else {
-                if (currentTargetDay === '09') {
-                    alert('Chave Incorreta! ⚽ Pense na maior competição de seleções do planeta que me prende na TV de 4 em 4 anos...');
-                } else {
-                    alert('Acesso Negado! Calma, ansiosa... Essa não é a senha certa! 🤫');
-                }
+                alert('Chave Incorreta! Pense com o coração... quanto tempo dura o nosso amor? 🤫❤️');
             }
         }
 
